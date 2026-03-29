@@ -9,7 +9,7 @@ export const CustomHeader = () => {
    const authStatus: string = 'not-authenticated';
    const itemCount = 2;
    return (
-      <header className='sticky top-0 w-full bg-slate-50 border-b backdrop-blur-lg'>
+      <header className='sticky top-0 z-50 w-full bg-slate-50 border-b backdrop-blur-lg'>
          <div className='container mx-auto px-4 lg:px-8'>
             <div className='flex h-16 justify-between items-center'>
                {/* Logo */}
