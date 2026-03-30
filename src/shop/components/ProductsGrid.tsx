@@ -15,7 +15,7 @@ export const ProductsGrid = () => {
                   <div className='flex-1'>
                      <div className='grid grid-cols-3 gap-5'>
                         {mockData.map((product) => (
-                           <ProductCard product={product} />
+                           <ProductCard product={product} key={product.id} />
                         ))}
                      </div>
                   </div>

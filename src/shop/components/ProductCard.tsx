@@ -1,3 +1,4 @@
+import { Badge } from '@/components/ui/badge';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent } from '@/components/ui/card';
 import type { Product } from '@/types/product.interface';
@@ -13,34 +14,17 @@ export const ProductCard = ({ product }: Props) => {
       console.log(product);
    };
 
-   //    const isLowStock = false;
+   const isLowStock = true;
    return (
-      //   <button
-      //      onClick={() => addItem(product)}
-      //      className='group relative flex flex-col items-center rounded-xl border bg-card p-4 text-left transition-all hover:shadow-lg hover:border-primary/40 hover:-translate-y-0.5 active:scale-[0.98]'
-      //   >
-      //      {isLowStock && (
-      //         <span className='absolute top-2 right-2 text-[10px] font-semibold uppercase tracking-wider px-2 py-0.5 rounded-full bg-destructive/10 text-destructive'>
-      //            Low
-      //         </span>
-      //      )}
-      //      <span className='text-4xl mb-3'>{product.imageUrl}</span>
-      //    <span className='text-sm font-medium text-card-foreground line-clamp-2 text-center w-full'>
-      //       {product.name}
-      //    </span>
-      //      <span className='text-lg font-bold text-primary mt-1'>
-      //         ${product.price.toFixed(2)}
-      //      </span>
-      //    <span className='text-xs text-muted-foreground mt-0.5'>
-      //       {product.stock} in stock
-      //    </span>
-      //      <div className='absolute inset-0 rounded-xl flex items-center justify-center bg-primary/5 opacity-0 group-hover:opacity-100 transition-opacity'>
-      //         <div className='w-8 h-8 rounded-full bg-primary text-primary-foreground flex items-center justify-center shadow-md'>
-      //            <Plus className='w-4 h-4' />
-      //         </div>
-      //      </div>
-      //   </button>
-      <Card className='group border-0 shadow-none product-card-hover cursor-pointer'>
+      <Card
+         className='group border-0 shadow-none product-card-hover cursor-pointer relative'
+         onClick={() => addItem(product)}
+      >
+         {isLowStock && (
+            <Badge className='absolute top-2 right-2 text-[10px] font-semibold uppercase tracking-wider px-2 py-0.5 z-100 rounded-full bg-destructive/10 text-destructive'>
+               Low
+            </Badge>
+         )}
          <CardContent className='p-0'>
             <div className='relative aspect-square overflow-hidden bg-muted rounded-lg'>
                <img
