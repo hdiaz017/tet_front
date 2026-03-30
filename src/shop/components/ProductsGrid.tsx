@@ -1,8 +1,9 @@
-import { mockData } from '@/mock/mockData';
 import { ProductCard } from './ProductCard';
 import { FilterSideBar } from './FilterSideBar';
+import { usePaginationMockData } from '../hooks/usePaginationMockData';
 
 export const ProductsGrid = () => {
+   const { offsetProducts } = usePaginationMockData();
    return (
       <section className='py-12 px-8'>
          <div className='container mx-auto'>
@@ -14,7 +15,7 @@ export const ProductsGrid = () => {
 
                   <div className='flex-1'>
                      <div className='grid grid-cols-3 gap-5'>
-                        {mockData.map((product) => (
+                        {offsetProducts.map((product) => (
                            <ProductCard product={product} key={product.id} />
                         ))}
                      </div>

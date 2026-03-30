@@ -43,7 +43,6 @@ export const ProductCard = ({ product }: Props) => {
                   </h3>
                   <p className='text-xs text-muted-foreground uppercase'>
                      {product.category}
-                     {/* <span className='font-bold'>{sizes.join(' - ')}</span> */}
                   </p>
                   <span className='text-xs text-muted-foreground mt-0.5'>
                      {product.stock} in stock
