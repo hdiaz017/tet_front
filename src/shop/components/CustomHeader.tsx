@@ -3,11 +3,28 @@ import { Badge } from '@/components/ui/badge';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Search, ShoppingCart } from 'lucide-react';
-import { Link } from 'react-router';
+import { useRef } from 'react';
+import { Link, useSearchParams } from 'react-router';
 
 export const CustomHeader = () => {
+   const inputRef = useRef<HTMLInputElement>(null);
    const authStatus: string = 'not-authenticated';
    const itemCount = 2;
+   const [searchParams, setSearchParams] = useSearchParams();
+
+   const query = searchParams.get('query') || '';
+   const handleSearch = (e: React.KeyboardEvent<HTMLInputElement>) => {
+      if (e.code !== 'Enter') return;
+      const newSearchParams = new URLSearchParams();
+      const query = inputRef.current?.value || '';
+      if (!query) {
+         newSearchParams.delete('query');
+      } else {
+         newSearchParams.set('query', query);
+      }
+      setSearchParams(newSearchParams);
+   };
+
    return (
       <header className='sticky top-0 z-50 w-full bg-slate-50 border-b backdrop-blur-lg'>
          <div className='container mx-auto px-4 lg:px-8'>
@@ -26,11 +43,11 @@ export const CustomHeader = () => {
                      <div className='relative'>
                         <Search className='absolute  left-3 top-1/2 h-4 w-4 -translate-y-1/2 text-muted-foreground' />
                         <Input
-                           // ref={inputRef}
+                           ref={inputRef}
                            placeholder='Buscar productos...'
                            className='pl-9 w-64 h-9 bg-white'
-                           // onKeyDown={handleSearch}
-                           // defaultValue={query}
+                           onKeyDown={handleSearch}
+                           defaultValue={query}
                         />
                      </div>
                   </div>
