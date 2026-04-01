@@ -44,7 +44,7 @@ export const CartTicket = () => {
       </>
    );
    return (
-      <div className='w-110 space-y-6 '>
+      <div className='w-110 space-y-6 max-h-125 overflow-y-auto '>
          <TicketTitle />
 
          <Table>
@@ -53,16 +53,12 @@ export const CartTicket = () => {
                   <TableHead className='w-25'>Producto</TableHead>
                   <TableHead>Cantidad</TableHead>
                   <TableHead>Precio</TableHead>
-                  <TableHead className='text-right'>Precio Total</TableHead>
+                  <TableHead className='text-right'>Subtotal</TableHead>
                </TableRow>
             </TableHeader>
             <TableBody>
                {cart.map((item) => (
-                  <TableRow
-                     key={item.id}
-                     onClick={() => removeFromCart(item.id)}
-                     // onClick={() => console.log(item.id)}
-                  >
+                  <TableRow key={item.id}>
                      <TableCell className='font-medium'>{item.name}</TableCell>
                      <TableCell className='flex items-center gap-2'>
                         {quantityField(item.id, item.quantity, item.stock)}
@@ -71,7 +67,10 @@ export const CartTicket = () => {
                      <TableCell className='text-right'>
                         ${(item.price * item.quantity).toFixed(2)}
                      </TableCell>
-                     <TableCell className='text-red-800 cursor-pointer'>
+                     <TableCell
+                        className='text-red-800 cursor-pointer'
+                        onClick={() => removeFromCart(item.id)}
+                     >
                         <X size={15} />
                      </TableCell>
                   </TableRow>
