@@ -1,6 +1,7 @@
 import { Badge } from '@/components/ui/badge';
-import { Button } from '@/components/ui/button';
+
 import { Card, CardContent } from '@/components/ui/card';
+import { useCartStore } from '@/store/cart.store';
 import type { Product } from '@/types/product.interface';
 
 // import { Plus } from 'lucide-react';
@@ -10,15 +11,16 @@ interface Props {
 }
 
 export const ProductCard = ({ product }: Props) => {
-   const addItem = (product: Product) => {
-      console.log(product);
-   };
+   const addToCart = useCartStore((state) => state.addToCart);
 
    const isLowStock = true;
    return (
       <Card
-         className='group border-0 shadow-none product-card-hover cursor-pointer relative'
-         onClick={() => addItem(product)}
+         className='group border-0 shadow-none product-card-hover cursor-pointer relative '
+         onClick={(e) => {
+            e.stopPropagation();
+            addToCart({ ...product, quantity: 1 });
+         }}
       >
          {isLowStock && (
             <Badge className='absolute top-2 right-2 text-[10px] font-semibold uppercase tracking-wider px-2 py-0.5 z-100 rounded-full bg-destructive/10 text-destructive'>
@@ -51,14 +53,6 @@ export const ProductCard = ({ product }: Props) => {
 
                <div className='flex items-center justify-between'>
                   <p className='font-semibold text-lg'>${product.price}</p>
-                  <Button
-                     size='sm'
-                     variant='outline'
-                     className='opacity-0 group-hover:opacity-100 transition-all duration-300 hover:bg-primary hover:text-primary-foreground border-primary/20 text-xs px-4 py-2 h-8'
-                     onClick={() => addItem(product)}
-                  >
-                     Agregar al carrito
-                  </Button>
                </div>
             </div>
          </CardContent>

@@ -2,6 +2,7 @@ import { CustomLogo } from '@/components/custom/CustomLogo';
 import { Badge } from '@/components/ui/badge';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
+import { useCartStore } from '@/store/cart.store';
 import { Search, ShoppingCart } from 'lucide-react';
 import { useRef } from 'react';
 import { Link, useSearchParams } from 'react-router';
@@ -9,7 +10,7 @@ import { Link, useSearchParams } from 'react-router';
 export const CustomHeader = () => {
    const inputRef = useRef<HTMLInputElement>(null);
    const authStatus: string = 'not-authenticated';
-   const itemCount = 2;
+   const itemCount = useCartStore((state) => state.cart.length);
    const [searchParams, setSearchParams] = useSearchParams();
 
    const query = searchParams.get('query') || '';
