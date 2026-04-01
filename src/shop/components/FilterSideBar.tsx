@@ -20,7 +20,7 @@ export const FilterSideBar = () => {
       'Impresión',
    ];
    return (
-      <div className='w-64 space-y-6'>
+      <div className='w-64 space-y-6 '>
          <div>
             <h3 className='font-semibold text-lg mb-4'>Categorías</h3>
          </div>

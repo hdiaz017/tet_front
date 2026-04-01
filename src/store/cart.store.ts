@@ -2,7 +2,7 @@ import type { Product } from '@/types/product.interface';
 import { create } from 'zustand';
 import { devtools } from 'zustand/middleware';
 
-type CartItem = Product & {
+export type CartItem = Product & {
    quantity: number;
 };
 
@@ -25,7 +25,7 @@ export const useCartStore = create<CartState>()(
             if (existing) {
                return {
                   cart: state.cart.map((p) =>
-                     p.id === product.id
+                     p.id === product.id && p.quantity < p.stock
                         ? { ...p, quantity: p.quantity + 1 }
                         : p,
                   ),
@@ -40,7 +40,7 @@ export const useCartStore = create<CartState>()(
 
       removeFromCart(id: number) {
          set((state) => {
-            return { cart: state.cart.filter((product) => product.id === id) };
+            return { cart: state.cart.filter((product) => product.id !== id) };
          });
       },
 

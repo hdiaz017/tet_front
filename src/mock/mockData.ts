@@ -4,7 +4,7 @@ export const mockData: Product[] = [
    {
       id: 1,
       name: 'Coca-Cola 600ml',
-      price: 1.5,
+      price: 18,
       category: 'Bebidas',
       stock: 4,
       imageUrl:
@@ -13,7 +13,7 @@ export const mockData: Product[] = [
    {
       id: 2,
       name: 'Coca Cola 450ml',
-      price: 1.5,
+      price: 14,
       category: 'Bebidas',
       stock: 36,
       imageUrl:
@@ -22,7 +22,7 @@ export const mockData: Product[] = [
    {
       id: 3,
       name: 'Coca Cola 210ml',
-      price: 1.5,
+      price: 10,
       category: 'Bebidas',
       stock: 36,
       imageUrl:
@@ -31,7 +31,7 @@ export const mockData: Product[] = [
    {
       id: 4,
       name: 'Ciel 500ml',
-      price: 0.99,
+      price: 10,
       category: 'Bebidas',
       stock: 72,
       imageUrl:
@@ -41,7 +41,7 @@ export const mockData: Product[] = [
    {
       id: 5,
       name: 'Ciel 1Lt',
-      price: 2.99,
+      price: 16,
       category: 'Bebidas',
       stock: 24,
       imageUrl:
@@ -50,7 +50,7 @@ export const mockData: Product[] = [
    {
       id: 6,
       name: 'Galletas Principe',
-      price: 3.99,
+      price: 18,
       category: 'Impresión',
       stock: 30,
       imageUrl:
@@ -59,7 +59,7 @@ export const mockData: Product[] = [
    {
       id: 7,
       name: 'Cubrebocas',
-      price: 3.49,
+      price: 10,
       category: 'All',
       stock: 25,
       imageUrl:
@@ -68,7 +68,7 @@ export const mockData: Product[] = [
    {
       id: 8,
       name: 'Impresion',
-      price: 1.29,
+      price: 5,
       category: 'Impresión',
       stock: 40,
       imageUrl:
@@ -77,7 +77,7 @@ export const mockData: Product[] = [
    {
       id: 9,
       name: 'Curp',
-      price: 4.29,
+      price: 10,
       category: 'Impresión',
       stock: 15,
       imageUrl:
@@ -86,24 +86,24 @@ export const mockData: Product[] = [
    {
       id: 10,
       name: 'Recarga Tel',
-      price: 5.49,
+      price: 3,
       category: 'Impresión',
       stock: 12,
       imageUrl: '🥜',
    },
    {
       id: 11,
-      name: 'Ropa',
-      price: 4.29,
-      category: 'Bebidas',
+      name: 'Cigarros',
+      price: 6,
+      category: 'Dulces',
       stock: 10,
       imageUrl: '🥛',
    },
    {
       id: 12,
       name: 'Chicle',
-      price: 3.99,
-      category: 'Impresión',
+      price: 2,
+      category: 'Dulces',
       stock: 8,
       imageUrl: '🧀',
    },
@@ -117,9 +117,9 @@ export const mockData: Product[] = [
    },
    {
       id: 14,
-      name: 'Butter Stick',
-      price: 2.99,
-      category: 'Bebidas',
+      name: 'Copias',
+      price: 1.5,
+      category: 'Impresión',
       stock: 15,
       imageUrl: '🧈',
    },

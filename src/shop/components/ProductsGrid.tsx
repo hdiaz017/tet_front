@@ -1,6 +1,7 @@
 import { ProductCard } from './ProductCard';
 import { FilterSideBar } from './FilterSideBar';
 import { usePaginationMockData } from '../hooks/usePaginationMockData';
+import { CartTicket } from './CartTicket';
 
 export const ProductsGrid = () => {
    const { offsetProducts } = usePaginationMockData();
@@ -19,6 +20,10 @@ export const ProductsGrid = () => {
                            <ProductCard product={product} key={product.id} />
                         ))}
                      </div>
+                  </div>
+
+                  <div>
+                     <CartTicket />
                   </div>
                </div>
             </div>
