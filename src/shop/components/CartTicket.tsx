@@ -8,44 +8,18 @@ import {
    TableRow,
 } from '@/components/ui/table';
 import { useCartStore } from '@/store/cart.store';
-import { useCartTotal } from '../hooks/useCartTotal';
+import { useCartTicket } from '../hooks/useCartTotal';
 import { TicketTitle } from './TicketTitle';
-
-import { Minus, Plus, X } from 'lucide-react';
-import { Button } from '@/components/ui/button';
+import { X } from 'lucide-react';
 
 export const CartTicket = () => {
    const cart = useCartStore((state) => state.cart);
-   const updateQuantity = useCartStore((state) => state.updateQuantity);
    const removeFromCart = useCartStore((state) => state.removeFromCart);
-   const { totalCart } = useCartTotal(cart);
+   const { totalCart, quantityField, checkout } = useCartTicket(cart);
 
-   const quantityField = (id: number, quantity: number, stock: number) => (
-      <>
-         <Button
-            variant={'secondary'}
-            size={'sm'}
-            className={'h-4 w-4 hover:bg-primary hover:text-white'}
-            onClick={() => updateQuantity(id, -1)}
-            disabled={quantity === 1}
-         >
-            <Minus />
-         </Button>
-         {quantity}
-         <Button
-            variant={'secondary'}
-            size={'sm'}
-            className={'h-4 w-4 hover:bg-primary hover:text-white'}
-            onClick={() => updateQuantity(id, +1)}
-            disabled={quantity === stock}
-         >
-            <Plus />
-         </Button>
-      </>
-   );
    return (
       <div className='w-110 space-y-6 max-h-125 overflow-y-auto '>
-         <TicketTitle />
+         <TicketTitle checkout={checkout} />
 
          <Table>
             <TableHeader>

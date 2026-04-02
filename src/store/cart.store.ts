@@ -8,6 +8,7 @@ export type CartItem = Product & {
 
 interface CartState {
    cart: CartItem[];
+   isLowStock: (id: number) => boolean;
    addToCart: (product: CartItem) => void;
    removeFromCart: (id: number) => void;
    updateQuantity: (id: number, quantity: number) => void;
