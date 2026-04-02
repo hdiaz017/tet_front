@@ -1,15 +1,16 @@
-import { useCartStore, type CartItem } from '@/store/cart.store';
+import { useCartStore } from '@/store/cart.store';
 import { Button } from '@/components/ui/button';
 import { Minus, Plus } from 'lucide-react';
+import type { CartItem, Sale } from '@/types/product.interface';
+import { saveSale } from '../service/sales.service';
 
 export const useCartTicket = (cart: CartItem[]) => {
    const updateQuantity = useCartStore((state) => state.updateQuantity);
+
    const clearCart = useCartStore((state) => state.clearCart);
-   const totalCart = cart
-      .reduce((acc, item) => {
-         return (acc += item.price * item.quantity);
-      }, 0)
-      .toLocaleString('mx-Mx', { style: 'currency', currency: 'USD' });
+   const totalCart = cart.reduce((acc, item) => {
+      return (acc += item.price * item.quantity);
+   }, 0);
 
    const quantityField = (id: number, quantity: number, stock: number) => (
       <>
@@ -35,9 +36,15 @@ export const useCartTicket = (cart: CartItem[]) => {
       </>
    );
 
-   const checkout = () => {
+   const checkout = (cart: CartItem[]) => {
       if (!cart.length) return;
-      console.log('Venta realizada', totalCart);
+      const sale: Sale = {
+         id: Date.now(),
+         items: cart,
+         total: Number(totalCart),
+         createdAt: new Date(),
+      };
+      saveSale(sale);
       clearCart();
    };
 

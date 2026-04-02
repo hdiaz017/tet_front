@@ -19,7 +19,7 @@ export const CartTicket = () => {
 
    return (
       <div className='w-110 space-y-6 max-h-125 overflow-y-auto '>
-         <TicketTitle checkout={checkout} />
+         <TicketTitle checkout={() => checkout(cart)} />
 
          <Table>
             <TableHeader>
@@ -53,7 +53,12 @@ export const CartTicket = () => {
             <TableFooter>
                <TableRow>
                   <TableCell colSpan={3}>Total</TableCell>
-                  <TableCell className='text-right'>{totalCart}</TableCell>
+                  <TableCell className='text-right'>
+                     {totalCart.toLocaleString('mx-Mx', {
+                        style: 'currency',
+                        currency: 'USD',
+                     })}
+                  </TableCell>
                </TableRow>
             </TableFooter>
          </Table>
