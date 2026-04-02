@@ -2,7 +2,8 @@ import { useCartStore } from '@/store/cart.store';
 import { Button } from '@/components/ui/button';
 import { Minus, Plus } from 'lucide-react';
 import type { CartItem, Sale } from '@/types/product.interface';
-import { saveSale } from '../service/sales.service';
+import { saveSale } from '@/service/sale.service';
+import { toast } from 'sonner';
 
 export const useCartTicket = (cart: CartItem[]) => {
    const updateQuantity = useCartStore((state) => state.updateQuantity);
@@ -46,6 +47,7 @@ export const useCartTicket = (cart: CartItem[]) => {
       };
       saveSale(sale);
       clearCart();
+      toast.success('Venta realizada!');
    };
 
    return {

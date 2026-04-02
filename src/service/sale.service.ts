@@ -5,3 +5,7 @@ export const saveSale = (sale: Sale) => {
    sales.push(sale);
    localStorage.setItem('sales', JSON.stringify(sales));
 };
+
+export const getSales = (): Sale[] => {
+   return JSON.parse(localStorage.getItem('sales') || '[]');
+};
