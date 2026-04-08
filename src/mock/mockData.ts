@@ -33,7 +33,7 @@ export const mockData: Product[] = [
       name: 'Ciel 500ml',
       price: 10,
       category: 'Bebidas',
-      stock: 72,
+      stock: 2,
       imageUrl:
          'https://resources.coca-colaentuhogar.com/media/catalog/product/7/5/750105530790---ciel-600ml-pet_4.jpg?quality=100&fit=bounds&height=550&width=550&format=webp',
    },

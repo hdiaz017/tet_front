@@ -20,14 +20,15 @@ export const FilterSideBar = () => {
       'Impresión',
    ];
    return (
-      <div className='w-64 space-y-6 '>
+      <div className='w-40 space-y-6 '>
          <div>
             <h3 className='font-semibold text-lg mb-4'>Categorías</h3>
          </div>
 
          {/* Categories */}
          <div className='space-y-4'>
-            <div className='grid grid-cols-3 gap-2'>
+            {/* <div className='flex flex-col w-10'> */}
+            <div className='grid grid-cols-2 gap-2'>
                {categories.map((category) => (
                   <Button
                      key={category}

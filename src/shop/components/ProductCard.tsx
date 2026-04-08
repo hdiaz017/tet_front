@@ -12,8 +12,8 @@ interface Props {
 
 export const ProductCard = ({ product }: Props) => {
    const addToCart = useCartStore((state) => state.addToCart);
+   const isLowStock = product.stock <= 5;
 
-   const isLowStock = true;
    return (
       <Card
          className='group border-0 shadow-none product-card-hover cursor-pointer relative '

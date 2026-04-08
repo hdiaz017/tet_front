@@ -24,7 +24,7 @@ export const appRouter = createBrowserRouter([
 
    // Admin route
    {
-      path: '/admin',
+      path: '/admin/dashboard',
       element: <AdminLayout />,
       children: [
          {
@@ -32,7 +32,7 @@ export const appRouter = createBrowserRouter([
             element: <DashboardPage />,
          },
          {
-            path: '/admin/products',
+            path: '/admin/dashboard/products',
             element: <AdminProductsPage />,
          },
       ],

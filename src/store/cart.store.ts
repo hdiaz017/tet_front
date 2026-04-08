@@ -1,18 +1,6 @@
-import type { Product } from '@/types/product.interface';
+import type { CartState } from '@/types/product.interface';
 import { create } from 'zustand';
 import { devtools } from 'zustand/middleware';
-
-export type CartItem = Product & {
-   quantity: number;
-};
-
-interface CartState {
-   cart: CartItem[];
-   addToCart: (product: CartItem) => void;
-   removeFromCart: (id: number) => void;
-   updateQuantity: (id: number, quantity: number) => void;
-   clearCart: () => void;
-}
 
 export const useCartStore = create<CartState>()(
    devtools((set) => ({

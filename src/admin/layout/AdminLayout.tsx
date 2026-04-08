@@ -1,10 +1,11 @@
-import React from 'react';
+import { CustomHeader } from '@/shop/components/CustomHeader';
+
 import { Outlet } from 'react-router';
 
 export const AdminLayout = () => {
    return (
       <div>
-         AdminLayout
+         <CustomHeader />
          <Outlet />
       </div>
    );

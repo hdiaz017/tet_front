@@ -1,16 +1,16 @@
 import { CustomLogo } from '@/components/custom/CustomLogo';
-import { Badge } from '@/components/ui/badge';
+
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
-import { useCartStore } from '@/store/cart.store';
-import { Search, ShoppingCart } from 'lucide-react';
+
+import { Search } from 'lucide-react';
 import { useRef } from 'react';
 import { Link, useSearchParams } from 'react-router';
 
 export const CustomHeader = () => {
    const inputRef = useRef<HTMLInputElement>(null);
    const authStatus: string = 'not-authenticated';
-   const itemCount = useCartStore((state) => state.cart.length);
+
    const [searchParams, setSearchParams] = useSearchParams();
 
    const query = searchParams.get('query') || '';
@@ -34,10 +34,10 @@ export const CustomHeader = () => {
                <CustomLogo />
 
                {/* Nav */}
-               <nav className='flex items-center space-x-8'>
+               {/* <nav className='flex items-center space-x-8'>
                   <Link to='/'>Productos</Link>
                   <Link to='/admin'>Dashboard</Link>
-               </nav>
+               </nav> */}
                {/* Search and Cart */}
                <div className='flex items-center space-x-4'>
                   <div className='hidden md:flex items-center space-x-2'>
@@ -68,21 +68,16 @@ export const CustomHeader = () => {
                         Logout
                      </Button>
                   )}
-
-                  <Button
-                     variant='default'
-                     size='sm'
-                     className='relative'
-                     //   onClick={() => setIsCartOpen(true)}
-                  >
-                     <ShoppingCart className='w-4 h-4 mr-1' />
-                     Cart
-                     {itemCount > 0 && (
-                        <Badge className='absolute -top-2 -right-2 h-5 w-5 p-0 flex items-center justify-center text-[12px] bg-red-300 text-accent-foreground border-2 border-red-300'>
-                           {itemCount}
-                        </Badge>
-                     )}
-                  </Button>
+                  <Link to='/admin/dashboard'>
+                     <Button
+                        variant='default'
+                        size='sm'
+                        className='relative'
+                        //   onClick={() => setIsCartOpen(true)}
+                     >
+                        DashBoard
+                     </Button>
+                  </Link>
                </div>
             </div>
          </div>
