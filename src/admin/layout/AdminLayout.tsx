@@ -1,5 +1,5 @@
 import { CustomHeader } from '@/shop/components/CustomHeader';
-import React from 'react';
+
 import { Outlet } from 'react-router';
 
 export const AdminLayout = () => {
