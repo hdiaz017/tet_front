@@ -16,7 +16,7 @@ export const ProductCard = ({ product }: Props) => {
 
    return (
       <Card
-         className='group border-0 shadow-none product-card-hover cursor-pointer relative '
+         className='group border shadow-none product-card-hover cursor-pointer relative '
          onClick={(e) => {
             e.stopPropagation();
             addToCart({ ...product, quantity: 1 });
@@ -28,7 +28,7 @@ export const ProductCard = ({ product }: Props) => {
             </Badge>
          )}
          <CardContent className='p-0'>
-            <div className='relative aspect-square overflow-hidden bg-muted rounded-lg'>
+            <div className='relative aspect-square overflow-hidden  rounded-lg'>
                <img
                   src={product.imageUrl}
                   alt={product.name}
