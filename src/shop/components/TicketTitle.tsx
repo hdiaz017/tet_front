@@ -13,7 +13,7 @@ export const TicketTitle = ({ checkout }: Props) => {
                Limpiar Ticket
             </Button> */}
             <Button
-               className=' bg-black text-white py-3 text-lg font-bold'
+               className=' bg-green-600 text-white py-3 text-lg font-bold'
                onClick={checkout}
             >
                Cobrar
