@@ -56,13 +56,17 @@ export const useAuthStore = create<AuthStore>()(
          }
 
          try {
-            const { data } = await supabase.auth.getUser(token);
-            if (data.user) {
-               set({
-                  user: { id: data.user.id, email: data.user.email! },
-                  authStatus: 'authenticated',
-               });
+            const { data, error } = await supabase.auth.getUser(token);
+            if (error || !data.user) {
+               console.log('Token inválido o expirado:', error?.message);
+               localStorage.removeItem('authToken');
+               set({ authStatus: 'not-authenticated' });
+               return;
             }
+            set({
+               user: { id: data.user.id, email: data.user.email! },
+               authStatus: 'authenticated',
+            });
          } catch (error) {
             console.log(error);
 
