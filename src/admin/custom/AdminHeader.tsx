@@ -63,14 +63,14 @@ export const AdminHeader = () => {
                         Logout
                      </Button>
                   }
-                  <Link to='/admin/dashboard'>
+                  <Link to='/'>
                      <Button
                         variant='default'
                         size='sm'
                         className='relative'
                         //   onClick={() => setIsCartOpen(true)}
                      >
-                        DashBoard
+                        Tienda
                      </Button>
                   </Link>
                </div>

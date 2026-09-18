@@ -1,14 +1,22 @@
 import { cn } from '@/lib/utils';
 import { LayoutDashboard, Package, Settings, LogOut } from 'lucide-react';
 import { Button } from '@/components/ui/button';
-import { NavLink } from 'react-router';
+import { NavLink, useLocation } from 'react-router';
 
 const menuItems = [
-   { path: '/admin/dashboard', label: 'Dashboard', icon: LayoutDashboard },
-   { path: '/admin/dashboard/products', label: 'Productos', icon: Package },
+   { path: '/admin/', label: 'Dashboard', icon: LayoutDashboard },
+   { path: '/admin/products', label: 'Productos', icon: Package },
 ];
 
 export const AdminSidebar = () => {
+   const { pathname } = useLocation();
+
+   const isActiveRoute = (path: string) => {
+      if (pathname.includes('/admin/products/') && path === '/admin/products') {
+         return true;
+      }
+      return pathname === path;
+   };
    return (
       <>
          <aside className='w-64 border-r bg-slate-50/50 flex flex-col'>
@@ -20,11 +28,11 @@ export const AdminSidebar = () => {
                         key={item.path}
                         to={item.path}
                         end
-                        className={({ isActive }) =>
+                        className={() =>
                            cn(
                               'flex items-center gap-3 px-3 py-3 rounded-md transition-colors font-medium',
                               'hover:bg-slate-200',
-                              isActive
+                              isActiveRoute(item.path)
                                  ? 'bg-white shadow-sm text-primary'
                                  : 'text-muted-foreground hover:text-foreground',
                            )

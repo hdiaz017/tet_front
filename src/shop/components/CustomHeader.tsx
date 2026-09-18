@@ -63,7 +63,7 @@ export const CustomHeader = () => {
                         Logout
                      </Button>
                   }
-                  <Link to='/admin/dashboard'>
+                  <Link to='/admin/'>
                      <Button
                         variant='default'
                         size='sm'

@@ -51,6 +51,6 @@ export interface Product {
    stockQuantity: number;
    category: string;
    image: string;
-   createdAt: Date;
-   updatedAt: Date;
+   createdAt?: Date;
+   updatedAt?: Date;
 }

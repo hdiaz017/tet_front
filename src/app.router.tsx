@@ -4,6 +4,7 @@ import { HomePage } from './shop/pages/Home/HomePage';
 import { AdminLayout } from './admin/layout/AdminLayout';
 import { DashboardPage } from './admin/pages/dashboard/DashboardPage';
 import { AdminProductsPage } from './admin/pages/products/AdminProductsPage';
+import { AdminProductPage } from './admin/pages/products/AdminProductPage';
 import { LoginForm } from './auth/LoginfForm';
 import {
    AuthenticadedRoute,
@@ -33,7 +34,7 @@ export const appRouter = createBrowserRouter([
 
    // Admin route
    {
-      path: '/admin/dashboard',
+      path: '/admin',
       element: (
          <AuthenticadedRoute>
             <AdminLayout />
@@ -45,8 +46,12 @@ export const appRouter = createBrowserRouter([
             element: <DashboardPage />,
          },
          {
-            path: '/admin/dashboard/products',
+            path: 'products',
             element: <AdminProductsPage />,
+         },
+         {
+            path: 'products/:id',
+            element: <AdminProductPage />,
          },
       ],
    },

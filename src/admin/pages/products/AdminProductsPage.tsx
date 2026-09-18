@@ -1,6 +1,6 @@
 import { AdminTitle } from '@/admin/custom/AdminTitle';
 
-import { Pencil, Plus, MoreHorizontal } from 'lucide-react';
+import { Pencil, Plus } from 'lucide-react';
 import {
    Table,
    TableBody,
@@ -11,13 +11,8 @@ import {
 } from '@/components/ui/table';
 import { Button } from '@/components/ui/button';
 import { Badge } from '@/components/ui/badge';
-// import {
-//    DropdownMenu,
-//    DropdownMenuContent,
-//    DropdownMenuItem,
-//    DropdownMenuTrigger,
-// } from '@/components/ui/dropdown-menu';
-import { useSearchParams } from 'react-router'; // Importante
+
+import { useSearchParams, useNavigate, Link } from 'react-router'; // Importante
 import { cn } from '@/lib/utils';
 
 export interface Product {
@@ -34,7 +29,7 @@ export interface Product {
 
 const MOCK_PRODUCTS: Product[] = [
    {
-      id: '1',
+      id: '88f8ef4b-8621-4e70-883b-372e305a88d3',
       name: 'Camiseta Oversize Blanca',
       description: 'Algodón 100% orgánico, corte holgado',
       price: 29.99,
@@ -49,6 +44,7 @@ const MOCK_PRODUCTS: Product[] = [
 export const AdminProductsPage = () => {
    // 1. Obtenemos el término de búsqueda directamente de la URL
    const [searchParams] = useSearchParams();
+   const navigate = useNavigate();
    const searchQuery = searchParams.get('q') || '';
 
    // 2. Filtramos los productos basándonos en ese término
@@ -65,16 +61,20 @@ export const AdminProductsPage = () => {
                title='Productos'
                subtitle='Aquí puedes ver y administrar tu prodcutos'
             />
-            <Button className='flex gap-2'>
-               <Plus className='h-4 w-4' /> Agregar Producto
-            </Button>
+
+            <Link to='/admin/products/new'>
+               <Button className='flex gap-2'>
+                  <Plus className='h-4 w-4' /> Agregar Producto
+               </Button>
+            </Link>
          </div>
 
          <div className='border rounded-md bg-white shadow-sm'>
             <Table>
                <TableHeader>
                   <TableRow>
-                     <TableHead className='w-[80px]'>Imagen</TableHead>
+                     <TableHead className='w-100'>ID</TableHead>
+                     <TableHead className='w-50'>Imagen</TableHead>
                      <TableHead>Producto</TableHead>
                      <TableHead>Categoría</TableHead>
                      <TableHead>Precio</TableHead>
@@ -86,6 +86,7 @@ export const AdminProductsPage = () => {
                   {filteredProducts.length > 0 ? (
                      filteredProducts.map((product) => (
                         <TableRow key={product.id}>
+                           <TableCell>{product.id}</TableCell>
                            <TableCell>
                               <img
                                  src={product.image}
@@ -134,9 +135,7 @@ export const AdminProductsPage = () => {
                                  size='sm'
                                  className='gap-2 text-blue-600 hover:text-blue-700 hover:bg-blue-50'
                                  onClick={() =>
-                                    console.log(
-                                       `Editando producto ${product.id}`,
-                                    )
+                                    navigate(`/admin/products/${product.id}`)
                                  }
                               >
                                  <Pencil className='h-4 w-4' />
