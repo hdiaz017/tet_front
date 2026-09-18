@@ -2,6 +2,7 @@ import { CustomLogo } from '@/components/custom/CustomLogo';
 
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
+import { useAuthStore } from '@/store/auth.store';
 
 import { Search } from 'lucide-react';
 import { useRef } from 'react';
@@ -9,7 +10,7 @@ import { Link, useSearchParams } from 'react-router';
 
 export const CustomHeader = () => {
    const inputRef = useRef<HTMLInputElement>(null);
-   const authStatus: string = 'not-authenticated';
+   const { logout } = useAuthStore();
 
    const [searchParams, setSearchParams] = useSearchParams();
 
@@ -52,22 +53,16 @@ export const CustomHeader = () => {
                         />
                      </div>
                   </div>
-                  {authStatus === 'not-authenticated' ? (
-                     <Link to='/auth/login'>
-                        <Button variant='default' size='sm' className='ml-2'>
-                           Login
-                        </Button>
-                     </Link>
-                  ) : (
+                  {
                      <Button
                         variant='default'
                         size='sm'
                         className='ml-2'
-                        // onClick={logout}
+                        onClick={logout}
                      >
                         Logout
                      </Button>
-                  )}
+                  }
                   <Link to='/admin/dashboard'>
                      <Button
                         variant='default'

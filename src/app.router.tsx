@@ -4,12 +4,21 @@ import { HomePage } from './shop/pages/Home/HomePage';
 import { AdminLayout } from './admin/layout/AdminLayout';
 import { DashboardPage } from './admin/pages/dashboard/DashboardPage';
 import { AdminProductsPage } from './admin/pages/products/AdminProductsPage';
+import { LoginForm } from './auth/LoginfForm';
+import {
+   AuthenticadedRoute,
+   NotAuthenticadedRoute,
+} from './auth/ProtectedRoutes';
 
 export const appRouter = createBrowserRouter([
    // Main routes
    {
       path: '/',
-      element: <ShopLayout />,
+      element: (
+         <AuthenticadedRoute>
+            <ShopLayout />
+         </AuthenticadedRoute>
+      ),
       children: [
          {
             index: true,
@@ -25,7 +34,11 @@ export const appRouter = createBrowserRouter([
    // Admin route
    {
       path: '/admin/dashboard',
-      element: <AdminLayout />,
+      element: (
+         <AuthenticadedRoute>
+            <AdminLayout />
+         </AuthenticadedRoute>
+      ),
       children: [
          {
             index: true,
@@ -36,5 +49,15 @@ export const appRouter = createBrowserRouter([
             element: <AdminProductsPage />,
          },
       ],
+   },
+
+   // Login
+   {
+      path: '/auth/login',
+      element: (
+         <NotAuthenticadedRoute>
+            <LoginForm />
+         </NotAuthenticadedRoute>
+      ),
    },
 ]);
