@@ -5,7 +5,6 @@ import { ProductForm } from './components/ProductForm';
 export const AdminProductPage = () => {
    const { id } = useParams();
    const { data: product, isLoading, isError } = useProduct(id || '');
-   console.log({ product, isLoading });
 
    const productTitle = id === 'new' ? 'Nuevo producto' : 'Editar producto';
    const productSubtitle =
@@ -15,6 +14,11 @@ export const AdminProductPage = () => {
 
    if (isError) {
       return <Navigate to='/admin/products' />;
+   }
+   if (isLoading) {
+      return (
+         <div className='flex justify-center p-10'>Cargando producto...</div>
+      );
    }
    if (!product) {
       return <Navigate to='/admin/products' />;

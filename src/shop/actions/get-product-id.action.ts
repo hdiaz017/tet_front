@@ -15,7 +15,6 @@ export const getProductByIdAction = async (id: string): Promise<Product> => {
       } as unknown as Product;
    }
    const { data } = await tetApi.get<ProductResponse>(`products/${id}`);
-   console.log(data);
 
    return data.data;
 };

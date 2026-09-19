@@ -1,7 +1,8 @@
 import { AdminTitle } from '@/admin/custom/AdminTitle';
 import { Button } from '@/components/ui/button';
 import type { Product } from '@/types/product.interface';
-import { SaveAll, Upload, X } from 'lucide-react';
+import { Plus, SaveAll, Tag, Upload, X } from 'lucide-react';
+import { useState } from 'react';
 import { Link } from 'react-router';
 
 interface Props {
@@ -11,8 +12,9 @@ interface Props {
 }
 
 export const ProductForm = ({ product, title, subtitle }: Props) => {
+   console.log(product);
    const [dragActive, setDragActive] = useState(false);
-   const handleInputChange = () => {};
+   //    const handleInputChange = () => {};
 
    const addTag = () => {};
 
@@ -80,9 +82,9 @@ export const ProductForm = ({ product, title, subtitle }: Props) => {
                            <input
                               type='text'
                               value={product.name}
-                              onChange={(e) =>
-                                 handleInputChange('name', e.target.value)
-                              }
+                              //   onChange={(e) =>
+                              //      handleInputChange('name', e.target.value)
+                              //   }
                               className='w-full px-4 py-3 border border-slate-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all duration-200'
                               placeholder='Título del producto'
                            />
@@ -96,12 +98,12 @@ export const ProductForm = ({ product, title, subtitle }: Props) => {
                               <input
                                  type='number'
                                  value={product.price}
-                                 onChange={(e) =>
-                                    handleInputChange(
-                                       'price',
-                                       parseFloat(e.target.value),
-                                    )
-                                 }
+                                 //  onChange={(e) =>
+                                 //     handleInputChange(
+                                 //        'price',
+                                 //        parseFloat(e.target.value),
+                                 //     )
+                                 //  }
                                  className='w-full px-4 py-3 border border-slate-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all duration-200'
                                  placeholder='Precio del producto'
                               />
@@ -114,12 +116,12 @@ export const ProductForm = ({ product, title, subtitle }: Props) => {
                               <input
                                  type='number'
                                  value={product.stockQuantity}
-                                 onChange={(e) =>
-                                    handleInputChange(
-                                       'stockQuantity',
-                                       parseInt(e.target.value),
-                                    )
-                                 }
+                                 //  onChange={(e) =>
+                                 //     handleInputChange(
+                                 //        'stockQuantity',
+                                 //        parseInt(e.target.value),
+                                 //     )
+                                 //  }
                                  className='w-full px-4 py-3 border border-slate-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all duration-200'
                                  placeholder='Stock del producto'
                               />
@@ -132,12 +134,12 @@ export const ProductForm = ({ product, title, subtitle }: Props) => {
                            </label>
                            <textarea
                               value={product.description}
-                              onChange={(e) =>
-                                 handleInputChange(
-                                    'description',
-                                    e.target.value,
-                                 )
-                              }
+                              //   onChange={(e) =>
+                              //      handleInputChange(
+                              //         'description',
+                              //         e.target.value,
+                              //      )
+                              //   }
                               rows={5}
                               className='w-full px-4 py-3 border border-slate-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all duration-200 resize-none'
                               placeholder='Descripción del producto'
@@ -169,8 +171,8 @@ export const ProductForm = ({ product, title, subtitle }: Props) => {
                         <div className='flex gap-2'>
                            <input
                               type='text'
-                              value={newCategory}
-                              onChange={(e) => setNewCategory(e.target.value)}
+                              value={product.category}
+                              //   onChange={(e) => setNewCategory(e.target.value)}
                               onKeyDown={(e) => e.key === 'Enter' && addTag()}
                               placeholder='Añadir nueva categoría...'
                               className='flex-1 px-4 py-2 border border-slate-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all duration-200'
@@ -278,14 +280,14 @@ export const ProductForm = ({ product, title, subtitle }: Props) => {
                            </span>
                            <span
                               className={`px-2 py-1 text-xs font-medium rounded-full ${
-                                 product.stockQuantity > 5
+                                 product.stockQuantity > 10
                                     ? 'bg-green-100 text-green-800'
                                     : product.stockQuantity > 0
                                       ? 'bg-yellow-100 text-yellow-800'
                                       : 'bg-red-100 text-red-800'
                               }`}
                            >
-                              {product.stockQuantity > 5
+                              {product.stockQuantity > 10
                                  ? 'En stock'
                                  : product.stockQuantity > 0
                                    ? 'Bajo stock'
