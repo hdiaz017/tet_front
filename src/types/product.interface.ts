@@ -1,20 +1,4 @@
-// export interface Product {
-//    id: number;
-//    name: string;
-//    price: number;
-//    category: Category;
-//    stock: number;
-//    imageUrl: string;
-// }
-
-export type Category = 'All' | 'Bebidas' | 'Dulces' | 'Galletas' | 'Impresión';
-
-// export interface Sale {
-//    id: number;
-//    total: number;
-//    items: CartItem[];
-//    createdAt: Date;
-// }
+export type Category = 'All' | 'Bebidas' | 'Dulces' | 'Galletas' | 'Impresion';
 
 export type CartItem = Product & {
    quantity: number;

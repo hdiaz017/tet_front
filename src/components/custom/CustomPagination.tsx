@@ -45,7 +45,7 @@ export const CustomPagination = ({ totalPages }: Props) => {
          })}
          <Button
             variant={'outline'}
-            disabled={page === 3}
+            disabled={page === totalPages}
             onClick={() => handlePageChange(page + 1)}
             size={'sm'}
          >

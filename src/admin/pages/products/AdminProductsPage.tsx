@@ -12,47 +12,17 @@ import {
 import { Button } from '@/components/ui/button';
 import { Badge } from '@/components/ui/badge';
 
-import { useSearchParams, useNavigate, Link } from 'react-router'; // Importante
+import { useNavigate, Link } from 'react-router'; // Importante
 import { cn } from '@/lib/utils';
 
-export interface Product {
-   id: string;
-   name: string;
-   description: string;
-   price: number;
-   stockQuantity: number;
-   category: string;
-   image: string;
-   createdAt: Date;
-   updatedAt: Date;
-}
-
-const MOCK_PRODUCTS: Product[] = [
-   {
-      id: '88f8ef4b-8621-4e70-883b-372e305a88d3',
-      name: 'Camiseta Oversize Blanca',
-      description: 'Algodón 100% orgánico, corte holgado',
-      price: 29.99,
-      stockQuantity: 45,
-      category: 'Ropa',
-      image: 'https://images.unsplash.com/photo-1521572163474-6864f9cf17ab?w=100',
-      createdAt: new Date(),
-      updatedAt: new Date(),
-   },
-];
+import { usePaginationMockData } from '@/shop/hooks/usePaginationMockData';
 
 export const AdminProductsPage = () => {
    // 1. Obtenemos el término de búsqueda directamente de la URL
-   const [searchParams] = useSearchParams();
+   // const [searchParams] = useSearchParams();
    const navigate = useNavigate();
-   const searchQuery = searchParams.get('q') || '';
-
-   // 2. Filtramos los productos basándonos en ese término
-   const filteredProducts = MOCK_PRODUCTS.filter(
-      (product) =>
-         product.name.toLowerCase().includes(searchQuery.toLowerCase()) ||
-         product.category.toLowerCase().includes(searchQuery.toLowerCase()),
-   );
+   // const searchQuery = searchParams.get('q') || '';
+   const { offsetProducts } = usePaginationMockData();
 
    return (
       <div className='p-6 space-y-6'>
@@ -83,8 +53,8 @@ export const AdminProductsPage = () => {
                   </TableRow>
                </TableHeader>
                <TableBody>
-                  {filteredProducts.length > 0 ? (
-                     filteredProducts.map((product) => (
+                  {offsetProducts.length > 0 ? (
+                     offsetProducts.map((product) => (
                         <TableRow key={product.id}>
                            <TableCell>{product.id}</TableCell>
                            <TableCell>
