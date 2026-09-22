@@ -67,6 +67,7 @@ export const useCartTicket = (cart: CartItem[]) => {
          return await postSaleAction(sale);
       },
       onSuccess: async () => {
+         setAmountPaid(0);
          clearCart();
          toast.success('Venta realizada con éxito');
          await Promise.all([
