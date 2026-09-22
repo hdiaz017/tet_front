@@ -7,15 +7,20 @@ import { toast } from 'sonner';
 import { useMutation, useQueryClient } from '@tanstack/react-query';
 import { v4 as uuidv4 } from 'uuid';
 import { postSaleAction } from '../actions/post-sale.action';
+import { useState } from 'react';
 
 export const useCartTicket = (cart: CartItem[]) => {
    const queryClient = useQueryClient();
-   const updateQuantity = useCartStore((state) => state.updateQuantity);
-
-   const clearCart = useCartStore((state) => state.clearCart);
+   const [amountPaid, setAmountPaid] = useState<number>(0);
    const totalCart = cart.reduce((acc, item) => {
       return (acc += item.price * item.quantity);
    }, 0);
+   const change = amountPaid - totalCart;
+   const isPaymentSufficient = amountPaid >= totalCart && totalCart > 0;
+
+   const updateQuantity = useCartStore((state) => state.updateQuantity);
+
+   const clearCart = useCartStore((state) => state.clearCart);
 
    const quantityField = (id: string, quantity: number, stock: number) => (
       <>
@@ -75,9 +80,13 @@ export const useCartTicket = (cart: CartItem[]) => {
    });
 
    return {
+      amountPaid,
+      change,
+      isPaymentSufficient,
+      isPending,
       totalCart,
       checkout,
       quantityField,
-      isPending,
+      setAmountPaid,
    };
 };

@@ -1,4 +1,4 @@
-import type { Product } from './product.interface';
+import type { Product, Sale } from './product.interface';
 
 export interface ProductsResponse {
    success: boolean;
@@ -7,4 +7,9 @@ export interface ProductsResponse {
 export interface ProductResponse {
    success: boolean;
    data: Product;
+}
+
+export interface SalesResponse {
+   success: boolean;
+   data: Sale[];
 }
