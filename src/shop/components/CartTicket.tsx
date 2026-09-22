@@ -78,7 +78,7 @@ export const CartTicket = () => {
                      <TableCell className='text-right'>
                         {totalCart.toLocaleString('mx-Mx', {
                            style: 'currency',
-                           currency: 'USD',
+                           currency: 'MXN',
                         })}
                      </TableCell>
                   </TableRow>

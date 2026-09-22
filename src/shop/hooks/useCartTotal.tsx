@@ -66,10 +66,13 @@ export const useCartTicket = (cart: CartItem[]) => {
 
          return await postSaleAction(sale);
       },
-      onSuccess: () => {
+      onSuccess: async () => {
          clearCart();
          toast.success('Venta realizada con éxito');
-         queryClient.invalidateQueries({ queryKey: ['products'] });
+         await Promise.all([
+            queryClient.invalidateQueries({ queryKey: ['sales'] }),
+            queryClient.invalidateQueries({ queryKey: ['products'] }),
+         ]);
       },
       // eslint-disable-next-line @typescript-eslint/no-explicit-any
       onError: (error: any) => {

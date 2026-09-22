@@ -5,6 +5,6 @@ export const useSales = () => {
    return useQuery({
       queryKey: ['sales'], // Llave única para el caché
       queryFn: getSalesAction, // Función del servicio
-      staleTime: 1000 * 60 * 60,
+      staleTime: 1000 * 60 * 5,
    });
 };
