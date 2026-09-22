@@ -12,7 +12,7 @@ interface Props {
 
 export const ProductCard = ({ product }: Props) => {
    const addToCart = useCartStore((state) => state.addToCart);
-   const isLowStock = product.stock <= 5;
+   const isLowStock = product.stockQuantity <= 5;
 
    return (
       <Card
@@ -30,7 +30,10 @@ export const ProductCard = ({ product }: Props) => {
          <CardContent className='p-0'>
             <div className='relative aspect-square overflow-hidden  rounded-lg'>
                <img
-                  src={product.imageUrl}
+                  src={
+                     product.image ||
+                     'https://upload.wikimedia.org/wikipedia/commons/a/a3/Image-not-found.png?utm_source=es.wikipedia.org&utm_campaign=index&utm_content=original'
+                  }
                   alt={product.name}
                   className='h-full w-full object-cover transition-transform duration-300 group-hover:scale-105'
                />
@@ -47,7 +50,7 @@ export const ProductCard = ({ product }: Props) => {
                      {product.category}
                   </p>
                   <span className='text-xs text-muted-foreground mt-0.5'>
-                     {product.stock} in stock
+                     {product.stockQuantity} in stock
                   </span>
                </div>
 

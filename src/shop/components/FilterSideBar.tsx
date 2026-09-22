@@ -17,10 +17,10 @@ export const FilterSideBar = () => {
       'Bebidas',
       'Dulces',
       'Galletas',
-      'Impresión',
+      'Papeleria',
    ];
    return (
-      <div className='w-40 space-y-6 '>
+      <div className='w-60 space-y-6  '>
          <div>
             <h3 className='font-semibold text-lg mb-4'>Categorías</h3>
          </div>
@@ -28,7 +28,7 @@ export const FilterSideBar = () => {
          {/* Categories */}
          <div className='space-y-4'>
             {/* <div className='flex flex-col w-10'> */}
-            <div className='grid grid-cols-2 gap-2'>
+            <div className='grid grid-cols-3 gap-2 '>
                {categories.map((category) => (
                   <Button
                      key={category}

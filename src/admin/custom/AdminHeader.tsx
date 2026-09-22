@@ -8,7 +8,7 @@ import { Search } from 'lucide-react';
 import { useRef } from 'react';
 import { Link, useSearchParams } from 'react-router';
 
-export const CustomHeader = () => {
+export const AdminHeader = () => {
    const inputRef = useRef<HTMLInputElement>(null);
    const { logout } = useAuthStore();
 
@@ -63,14 +63,14 @@ export const CustomHeader = () => {
                         Logout
                      </Button>
                   }
-                  <Link to='/admin/'>
+                  <Link to='/'>
                      <Button
                         variant='default'
                         size='sm'
                         className='relative'
                         //   onClick={() => setIsCartOpen(true)}
                      >
-                        DashBoard
+                        Tienda
                      </Button>
                   </Link>
                </div>

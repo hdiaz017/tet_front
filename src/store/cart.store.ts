@@ -13,7 +13,7 @@ export const useCartStore = create<CartState>()(
             if (existing) {
                return {
                   cart: state.cart.map((p) =>
-                     p.id === product.id && p.quantity < p.stock
+                     p.id === product.id && p.quantity < p.stockQuantity
                         ? { ...p, quantity: p.quantity + 1 }
                         : p,
                   ),
@@ -26,13 +26,13 @@ export const useCartStore = create<CartState>()(
          });
       },
 
-      removeFromCart(id: number) {
+      removeFromCart(id: string) {
          set((state) => {
             return { cart: state.cart.filter((product) => product.id !== id) };
          });
       },
 
-      updateQuantity(id: number, quantity: number) {
+      updateQuantity(id: string, quantity: number) {
          set((state) => {
             return {
                cart: state.cart.map((product) => {

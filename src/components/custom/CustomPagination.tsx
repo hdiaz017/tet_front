@@ -12,7 +12,7 @@ export const CustomPagination = ({ totalPages }: Props) => {
    const page = !isNaN(+queryPage) ? +queryPage : 1;
 
    const handlePageChange = (page: number) => {
-      if (page < 1 || page > 3) return;
+      if (page < 1 || page > totalPages) return;
 
       searchParams.set('page', page.toString());
       setSearchParams(searchParams);
@@ -45,7 +45,7 @@ export const CustomPagination = ({ totalPages }: Props) => {
          })}
          <Button
             variant={'outline'}
-            disabled={page === 3}
+            disabled={page === totalPages}
             onClick={() => handlePageChange(page + 1)}
             size={'sm'}
          >
