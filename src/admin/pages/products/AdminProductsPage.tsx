@@ -16,13 +16,14 @@ import { useNavigate, Link } from 'react-router'; // Importante
 import { cn } from '@/lib/utils';
 
 import { usePaginationMockData } from '@/shop/hooks/usePaginationMockData';
+import { CustomPagination } from '@/components/custom/CustomPagination';
 
 export const AdminProductsPage = () => {
    // 1. Obtenemos el término de búsqueda directamente de la URL
    // const [searchParams] = useSearchParams();
    const navigate = useNavigate();
    // const searchQuery = searchParams.get('q') || '';
-   const { offsetProducts } = usePaginationMockData();
+   const { offsetProducts, totalPages } = usePaginationMockData();
 
    return (
       <div className='p-6 space-y-6'>
@@ -128,6 +129,7 @@ export const AdminProductsPage = () => {
                </TableBody>
             </Table>
          </div>
+         <CustomPagination totalPages={totalPages} />
       </div>
    );
 };

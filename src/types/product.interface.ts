@@ -1,4 +1,4 @@
-export type Category = 'All' | 'Bebidas' | 'Dulces' | 'Galletas' | 'Impresion';
+export type Category = 'All' | 'Bebidas' | 'Dulces' | 'Galletas' | 'Papeleria';
 
 export type CartItem = Product & {
    quantity: number;
@@ -8,8 +8,8 @@ export interface CartState {
    cart: CartItem[];
    isLowStock: (id: number) => boolean;
    addToCart: (product: CartItem) => void;
-   removeFromCart: (id: number) => void;
-   updateQuantity: (id: number, quantity: number) => void;
+   removeFromCart: (id: string) => void;
+   updateQuantity: (id: string, quantity: number) => void;
    clearCart: () => void;
 }
 

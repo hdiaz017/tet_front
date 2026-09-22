@@ -13,7 +13,7 @@ export const useCartTicket = (cart: CartItem[]) => {
       return (acc += item.price * item.quantity);
    }, 0);
 
-   const quantityField = (id: number, quantity: number, stock: number) => (
+   const quantityField = (id: string, quantity: number, stock: number) => (
       <>
          <Button
             variant={'secondary'}
@@ -40,10 +40,10 @@ export const useCartTicket = (cart: CartItem[]) => {
    const checkout = (cart: CartItem[]) => {
       if (!cart.length) return;
       const sale: Sale = {
-         id: Date.now(),
+         id: '',
          items: cart,
          total: Number(totalCart),
-         createdAt: new Date(),
+         createdAt: '',
       };
       saveSale(sale);
       clearCart();

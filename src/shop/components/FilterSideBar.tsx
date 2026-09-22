@@ -17,7 +17,7 @@ export const FilterSideBar = () => {
       'Bebidas',
       'Dulces',
       'Galletas',
-      'Impresion',
+      'Papeleria',
    ];
    return (
       <div className='w-60 space-y-6  '>

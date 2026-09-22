@@ -35,7 +35,11 @@ export const CartTicket = () => {
                   <TableRow key={item.id}>
                      <TableCell className='font-medium'>{item.name}</TableCell>
                      <TableCell className='flex items-center gap-2'>
-                        {quantityField(item.id, item.quantity, item.stock)}
+                        {quantityField(
+                           item.id,
+                           item.quantity,
+                           item.stockQuantity,
+                        )}
                      </TableCell>
                      <TableCell>${item.price.toFixed(2)}</TableCell>
                      <TableCell className='text-right'>
