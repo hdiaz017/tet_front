@@ -15,11 +15,12 @@ import { X } from 'lucide-react';
 export const CartTicket = () => {
    const cart = useCartStore((state) => state.cart);
    const removeFromCart = useCartStore((state) => state.removeFromCart);
-   const { totalCart, quantityField, checkout } = useCartTicket(cart);
+   const { totalCart, quantityField, checkout, isPending } =
+      useCartTicket(cart);
 
    return (
       <div className='w-110 space-y-6 max-h-125 overflow-y-auto '>
-         <TicketTitle checkout={() => checkout(cart)} />
+         <TicketTitle checkout={() => checkout(cart)} isPending={isPending} />
 
          <Table>
             <TableHeader>
